@@ -1,0 +1,45 @@
+﻿<Window x:Class="A24_Stroka.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:A24_Stroka"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1300" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="{Binding WindowState, Mode=TwoWay}">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"
+            CornerRadius="2"
+            GlassFrameThickness="0"
+            NonClientFrameEdges="None"
+            ResizeBorderThickness="3"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="GridUp_MouseLeftButtonDown" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="105"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"  x:Name="imageLogo" Height="20" Width="20" KeyboardNavigation.TabNavigation="None" Focusable="False" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" KeyboardNavigation.TabNavigation="None" Focusable="False" Margin="0 0" Text="A24 Stroka" Foreground="Black" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Times New Roman"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                <Button x:Name="btnWinMini" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" KeyboardNavigation.TabNavigation="None" Focusable="False" VerticalAlignment="Top" Width="35" Height="30" Background="White" BorderThickness="0" BorderBrush="#FF535353" Padding="0" Cursor="Arrow" >
+                    <materialDesign:PackIcon Kind="WindowMinimize" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Height="15" Width="15" Margin="0 11 0 0"/>
+                </Button>
+                <Button x:Name="btnWinMax" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" KeyboardNavigation.TabNavigation="None" Focusable="False" VerticalAlignment="Top" Width="35" Height="30" Background="White" BorderThickness="0" Padding="0" Cursor="Arrow" >
+                    <materialDesign:PackIcon x:Name="imgMaximize" Kind="WindowMaximize" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Height="15" Width="15"/>
+                </Button>
+                <Button x:Name="btnClose" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" KeyboardNavigation.TabNavigation="None" Focusable="False" VerticalAlignment="Top" Width="35" Height="30" Background="White" BorderThickness="0" BorderBrush="#FF535353" Padding="0" Cursor="Arrow" Command="{Binding ClickClose}">
+                    <materialDesign:PackIcon Kind="WindowClose"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Height="15" Width="15"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Frame x:Name="CurrentPage" Grid.Row="1" Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>
