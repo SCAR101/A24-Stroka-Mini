@@ -30,8 +30,7 @@ namespace A24_Stroka.ViewModels
             get
             {
                 return new RelayCommand((obj) =>
-                {
-                    _tCPOperations.sendMessage("Disconnect," + Singleton.Instance.IPClient, Singleton.Instance.IPServer, Singleton.Instance.PortToServer);
+                {                 
                     System.Windows.Application.Current.Shutdown();
                 });
             }

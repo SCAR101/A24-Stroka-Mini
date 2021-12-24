@@ -38,6 +38,10 @@ namespace A24_Stroka.ViewModels
             _appprop = appprop;
             _tCPOperations = tCPOperations;
             InitGrid();
+            if (Singleton.Instance.CollectionNews.Count != 0)
+            {
+                DGSelectedIndex = 2;
+            }
         }
 
         public void OnNavigatedTo(object arg)
@@ -65,7 +69,17 @@ namespace A24_Stroka.ViewModels
             }
         }
 
-
+        private int _dGSelectedIndex;
+        public int DGSelectedIndex
+        {
+            get { return _dGSelectedIndex; }
+            set
+            {
+                _dGSelectedIndex = value;
+                OnPropertyChanged("SelectionValue");
+                
+            }
+        }
 
         public ICommand CheckUncheck
         {
